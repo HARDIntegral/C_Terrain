@@ -7,7 +7,7 @@ OBJ_DIR := bin/obj/
 
 EXEC_DIR := bin/
 EXEC_NAME := perlin
-BUILD_TARGETS := out
+BUILD_TARGET := out
 
 EXEC := $(EXEC_NAME).$(BUILD_TARGET)
 BUILD := $(EXEC_DIR)$(EXEC)
@@ -20,8 +20,7 @@ DEPS := $(patsubst %.o, %.d, $(OBJS))
 -include $(DEPS)
 DEP_FLAGS = -MMD -MF $(@:.o=.d)
 
-build_release: $(OBJS)
-	@echo "" > .tmp_data
+build: $(OBJS)
 	@echo [INFO] Creating [$(BUILD_TARGET)] ...
 	@$(CC) -o $(BUILD) $^
 	@echo [INFO] [$(EXEC)] Created!
